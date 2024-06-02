@@ -1,0 +1,37 @@
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px;
+}
+
+.image-gallery {
+  flex: 1;
+}
+
+.product-info {
+  flex: 1;
+  min-width: 320px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.button {
+  border: solid 2px;
+  border-radius: 8px;
+  background-color: #d3aac41c;
+  border-color: #92567c;
+  padding: 6px;
+  width: fit-content;
+  cursor: pointer;
+  color: #92567c;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  width: fit-content;
+}

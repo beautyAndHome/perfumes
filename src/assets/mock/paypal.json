@@ -1,0 +1,83 @@
+{
+    "data": {
+        "orderID": "123123123",
+        "payerID": "123123123",
+        "paymentID": "123123123",
+        "billingToken": null,
+        "facilitatorAccessToken": "12312312-123-123",
+        "paymentSource": "paypal"
+    },
+    "order": {
+        "id": "123123",
+        "intent": "CAPTURE",
+        "status": "COMPLETED",
+        "purchase_units": [
+            {
+                "reference_id": "default",
+                "amount": {
+                    "currency_code": "EUR",
+                    "value": "0.01"
+                },
+                "payee": {
+                    "email_address": "123123.123123@gmail.com",
+                    "merchant_id": "123123"
+                },
+                "soft_descriptor": "PAYPAL *BEAUTYHOME",
+                "shipping": {
+                    "name": {
+                        "full_name": "Mario Rossi"
+                    },
+                    "address": {
+                        "address_line_1": "viale delle nocelle 43",
+                        "admin_area_2": "Miami",
+                        "admin_area_1": "MI",
+                        "postal_code": "123123",
+                        "country_code": "US"
+                    }
+                },
+                "payments": {
+                    "captures": [
+                        {
+                            "id": "123123123",
+                            "status": "COMPLETED",
+                            "amount": {
+                                "currency_code": "EUR",
+                                "value": "0.01"
+                            },
+                            "final_capture": true,
+                            "seller_protection": {
+                                "status": "ELIGIBLE",
+                                "dispute_categories": [
+                                    "ITEM_NOT_RECEIVED",
+                                    "UNAUTHORIZED_TRANSACTION"
+                                ]
+                            },
+                            "create_time": "2024-05-05T16:59:14Z",
+                            "update_time": "2024-05-05T16:59:14Z"
+                        }
+                    ]
+                }
+            }
+        ],
+        "payer": {
+            "name": {
+                "given_name": "Mario",
+                "surname": "Rossi"
+            },
+            "email_address": "123123123@gmail.com",
+            "payer_id": "123123123",
+            "address": {
+                "country_code": "US"
+            }
+        },
+        "create_time": "2024-05-05T16:58:25Z",
+        "update_time": "2024-05-05T16:59:15Z",
+        "links": [
+            {
+                "href": "https://api.paypal.com/v2/checkout/orders/123123123",
+                "rel": "self",
+                "method": "GET"
+            }
+        ]
+    }
+}

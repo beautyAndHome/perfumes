@@ -1,0 +1,124 @@
+<div class="cart purple">
+  <!-- Carrello vuoto -->
+  <ng-container *ngIf="!isCheckedOut && !cart.length">
+    <div class="title white">
+      Il tuo carrello Beauty and Home è vuoto! Vai subito a shoppare!
+    </div>
+  </ng-container>
+
+  <!-- checkout -->
+  <ng-container *ngIf="isCheckedOut">
+    <div class="title white">
+      Ordine registrato! Sarai informato a breve sulla conferma dell'ordine via mail/telefono.
+    </div>
+  </ng-container>
+
+  <!-- Carrello pieno -->
+  <ng-container *ngIf="cart.length">
+    <div class="products-container white">
+      <div class="title mb-30">Carrello</div>
+
+      <!-- lista prodotti -->
+      <ng-container *ngFor="let prodotto of cart; last as last">
+        <div class="product-card" [ngClass]="{ 'border-bottom': last }">
+          <div class="product-details">
+            <img
+            class="image"
+            width="200px"
+            height="auto"
+            src="{{ prodotto.immagine }}"
+          />
+            <div class="title-big">{{ prodotto.nome }}</div>
+            <div class="title-medium">{{ prodotto.descrizione }}</div>
+            <div class="title-medium bold">{{ prodotto.prezzo }} €</div>
+            <div class="title-medium">{{ prodotto.ml }} ml</div>
+            <div class="bottom-bar">
+              <div class="">Quantità: {{ prodotto.quantitaInCarrello }}</div>
+              <div class="link" (click)="removeProduct(prodotto)">Rimuovi</div>
+            </div>
+          </div>
+        </div>
+        <div class="total-price" *ngIf="last">
+          Prezzo totale: {{ getTotalPrice() }} €
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<div class="payment" *ngIf="cart.length">
+  <!-- Selezione metodo di pagamento -->
+  <div class="payment-method">
+   <label class="mr-8">Seleziona il metodo di pagamento:</label>
+   <select [(ngModel)]="selectedPaymentMethod">
+     <option value="contrassegno">Contrassegno</option>
+     <option value="paypal">PayPal o Carta</option>
+   </select>
+ </div>
+ <br>
+ <!-- Form di pagamento -->
+ <div *ngIf="selectedPaymentMethod">
+ 
+  <form class="payment-form">
+    <div>
+      <div>
+        <label>Nome:</label>
+      </div>
+      <input type="text" [(ngModel)]="paymentForm.nome" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+      <div>
+        <label class="mr-8">Cognome:</label>
+      </div>
+      <input type="text" [(ngModel)]="paymentForm.cognome" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+      <div>
+        <label class="mr-8">Indirizzo:</label>
+      </div>
+      <input type="text" [(ngModel)]="paymentForm.via" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+      <div>
+        <label class="mr-8">CAP:</label>
+      </div>
+      <input type="text" [(ngModel)]="paymentForm.cap" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+      <div>
+        <label class="mr-8">Comune:</label>
+      </div>
+      <input type="text" [(ngModel)]="paymentForm.comune" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+      <div>
+        <label class="mr-8">Provincia:</label>
+      </div>
+      <input type="text" [(ngModel)]="paymentForm.provincia" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+      <div>
+        <label class="mr-8">Telefono:</label>
+      </div>
+      <input type="text" [(ngModel)]="paymentForm.telefono" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+      <div>
+        <label class="mr-8">Email:</label>
+      </div>
+      <input type="email" [(ngModel)]="paymentForm.email" (ngModelChange)="checkFormValidation()"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+     <!-- Puoi aggiungere altri campi necessari per la spedizione -->
+   </form>
+  </div>
+  <button id="procedi-button" class="procedi-button" type="button" [disabled]="!isCartFormValid" (click)="onClickProcessPayment()">Procedi al acquisto</button>
+  <app-paypal-payment *ngIf="isShowPaypalSection" [prezzo]="getTotalPrice()" (paymentSuccess)="processPayment($event)"></app-paypal-payment>
+</div>

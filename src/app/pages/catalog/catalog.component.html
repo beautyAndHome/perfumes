@@ -1,0 +1,120 @@
+<div class="sidebar-container">
+  <app-search-bar (searchInput)="searchProducts($event)"></app-search-bar>
+  <div class="filters">
+    <h3>Filtra per categoria</h3>
+    <div class="filter-item">
+      <input
+        type="checkbox"
+        id="fragranzeMaschili"
+        name="fragranzeMaschili"
+        (change)="onFragranzeMaschiliChange($event)"
+      />
+      <label for="fragranzeMaschili">Fragranze Maschili</label>
+    </div>
+    <div class="filter-item">
+      <input
+        type="checkbox"
+        id="fragranzeFemminili"
+        name="fragranzeFemminili"
+        (change)="onFragranzeFemminiliChange($event)"
+      />
+      <label for="fragranzeFemminili">Fragranze Femminili</label>
+    </div>
+    <div class="filter-item">
+      <input
+        type="checkbox"
+        id="fragranzeUnisex"
+        name="fragranzeUnisex"
+        (change)="onFragranzeUnisexChange($event)"
+      />
+      <label for="fragranzeUnisex">Fragranze Unisex</label>
+    </div>
+  </div>
+</div>
+
+<div class="main-container">
+
+  <div class="cards">
+    <div class="cards-card cursor-pointer" *ngFor="let prodotto of prodotti" 
+    (click)="prodotto.id !== undefined ? onProductSelected(prodotto.id) : null">
+      <div class="cards-card-image">
+        <img
+                [src]="prodotto.immagine"
+                alt="Immagine prodotto"
+                height="150"
+              />
+      </div>
+      <div class="cards-card-content">
+        <div class="cards-card-content-nome">{{ prodotto.nome }}</div>
+        <!-- <div class="cards-card-content-descrizione">{{ prodotto.descrizione }}</div> -->
+        <div class="cards-card-content-prezzo">{{ prodotto.prezzo }} €</div>
+        <div class="cards-card-content-ml">{{ prodotto.ml }} ml</div>
+        <div class="cards-card-content-categoria">{{ prodotto.categoria }}</div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- <div class="w100">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrizione</th>
+          <th>Prezzo</th>
+          <th>Quantità</th>
+          <th>Categoria</th>
+          <th>Immagine</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let prodotto of prodotti"
+          (click)="
+            prodotto.id !== undefined ? onProductSelected(prodotto.id) : null
+          "
+          class="cursor-pointer"
+        >
+          <td>{{ prodotto.nome }}</td>
+          <td>{{ prodotto.descrizione }}</td>
+          <td>{{ prodotto.prezzo }}</td>
+          <td>{{ prodotto.ml }}</td>
+          <td>{{ prodotto.categoria }}</td>
+          <td>
+            <div class="image-container">
+              <img
+                [src]="prodotto.immagine"
+                alt="Immagine prodotto"
+                height="50"
+                class="product-image"
+                (mouseenter)="
+                  prodotto.immagine
+                    ? showPreviewImage(prodotto.immagine, $event)
+                    : null
+                "
+                (mouseleave)="hidePreviewImage()"
+              />
+              <div
+                class="preview-image"
+                *ngIf="showPreview && hoveredImageUrl === prodotto.immagine"
+                [ngStyle]="getPreviewImageStyle()"
+              >
+                <img
+                  [src]="prodotto.immagine"
+                  alt="Anteprima immagine"
+                  class="preview-img"
+                />
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+</div>

@@ -1,0 +1,102 @@
+.cart {
+  padding: 16px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.title-medium {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 16px;
+}
+
+.title-big {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.purple {
+  background-color: #d3aac41c;
+}
+
+.white {
+  background-color: white;
+}
+
+.product-card {
+  padding: 20px;
+  border-top: 1px solid lightgray;
+  display: flex;
+}
+
+.border-bottom {
+  border-bottom: 1px solid lightgray;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0px 24px;
+}
+
+.products-container {
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.image {
+  flex-shrink: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.link {
+  cursor: pointer;
+  color: #007185;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.bottom-bar {
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.payment {
+  padding: 16px 16px 36px 16px;
+
+  &-form{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+.mr-8 {
+  margin-right: 8px;
+}
+
+.procedi-button{
+  margin-top: 12px;
+  border-radius: 6px;
+  border-color: #92567c;
+  color: #92567c;
+  padding: 7px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
